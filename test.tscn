@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://dmb5dabq6jew2"]
+
+[ext_resource type="PackedScene" uid="uid://bt0bh0b864xbs" path="res://player.tscn" id="1_37kl0"]
+[ext_resource type="Texture2D" uid="uid://bqsonuu0y2dst" path="res://test block.png" id="2_8uh7m"]
+[ext_resource type="PackedScene" uid="uid://cj4nmk5xj0kgy" path="res://wall.tscn" id="3_6uqi0"]
+[ext_resource type="Texture2D" uid="uid://dk20kt3fwct1g" path="res://ghost.png" id="4_ppyta"]
+[ext_resource type="Script" uid="uid://dhfr0bryev50c" path="res://ghost.gd" id="4_ykrsh"]
+
+[node name="test" type="Node2D" unique_id=310221700]
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=845400652]
+z_index = -1
+texture_filter = 1
+offset_right = 839.0
+offset_bottom = 765.0
+scale = Vector2(5, 5)
+texture = ExtResource("2_8uh7m")
+stretch_mode = 1
+
+[node name="wall" parent="." unique_id=926273496 instance=ExtResource("3_6uqi0")]
+position = Vector2(1553, -73)
+scale = Vector2(2, 20)
+
+[node name="wall2" parent="." unique_id=223326992 instance=ExtResource("3_6uqi0")]
+position = Vector2(725, -128)
+scale = Vector2(2, 20)
+
+[node name="PlayerCharacter" parent="." unique_id=687693305 instance=ExtResource("1_37kl0")]
+position = Vector2(1363, 1551)
+
+[node name="RigidBody2D" type="RigidBody2D" parent="." unique_id=1088886421]
+gravity_scale = 0.0
+script = ExtResource("4_ykrsh")
+
+[node name="Sprite2D" type="Sprite2D" parent="RigidBody2D" unique_id=764221719]
+light_mask = 3
+texture_filter = 1
+position = Vector2(1150, 7000)
+scale = Vector2(7, 7)
+texture = ExtResource("4_ppyta")
