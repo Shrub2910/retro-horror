@@ -1,28 +1,54 @@
 extends CharacterBody2D
 
 var dir := Vector2.ZERO
-var speed := 400
+@export var speed := 400
+@export var inventory := []
+@export var torch_speed := 10
 
 func _process(delta: float) -> void:
-	if Input.is_action_pressed("Left"):
-		dir = Vector2.LEFT
-	elif Input.is_action_pressed("Right"):
-		dir = Vector2.RIGHT
-	elif Input.is_action_pressed("Up"):
-		dir = Vector2.UP
-	elif Input.is_action_pressed("Down"):
-		dir = Vector2.DOWN
-	else:
-		dir = Vector2.ZERO
+	dir = Input.get_vector("Left","Right","Up","Down").normalized()
 		
 	if dir != Vector2.ZERO:
-		if dir == Vector2.UP:
+		if dir.y < 0:
 			$AnimatedSprite2D.play("Walking_up")
+			#$PlayerCamera/Light.rotation = lerp($PlayerCamera/Light.rotation,deg_to_rad(0),.5)
+			#if dir.x > 0:
+				#$PlayerCamera/Light.rotation = lerp($PlayerCamera/Light.rotation,deg_to_rad(45),.5)
+			#elif dir.x < 0:
+				#$PlayerCamera/Light.rotation = lerp($PlayerCamera/Light.rotation,deg_to_rad(-45),.5)
 		else:
 			$AnimatedSprite2D.play("Walking")
 	else:
-		$AnimatedSprite2D.play("Idle")
+		if $AnimatedSprite2D.animation == "Walking_up":
+			$AnimatedSprite2D.play("Idle_up")
+		elif $AnimatedSprite2D.animation != "Idle_up":
+			$AnimatedSprite2D.play("Idle")
+		
+	$PlayerCamera/Light.rotation = lerp_angle($PlayerCamera/Light.rotation,get_angle_to(get_global_mouse_position()) + PI/2,delta*torch_speed)
+	#if dir == Vector2.LEFT:
+		#$PlayerCamera/Light.rotation = lerp($PlayerCamera/Light.rotation,deg_to_rad(270),.5)
+	#elif dir == Vector2.RIGHT:
+		#$PlayerCamera/Light.rotation = lerp($PlayerCamera/Light.rotation,deg_to_rad(90),.5)
+	#elif dir.y > 0:
+		#$PlayerCamera/Light.rotation = lerp($PlayerCamera/Light.rotation,deg_to_rad(180),.5)
+		#if dir.x > 0:
+			#$PlayerCamera/Light.rotation = lerp($PlayerCamera/Light.rotation,deg_to_rad(135),.5)
+		#elif dir.x < 0:
+			#$PlayerCamera/Light.rotation = lerp($PlayerCamera/Light.rotation,deg_to_rad(225),.5)
 	
 	velocity = dir * speed
 	
 	move_and_slide()
+
+func rotation_lerp(from,to,weight):
+	if from > to:
+		lerp(from,deg_to_rad(rad_to_deg(to)*-1),weight)
+
+func _on_pickup_area_area_entered(area: Area2D) -> void:
+	inventory.append(area.get_meta("Item"))
+	print(inventory[0])
+	area.get_parent().queue_free()
+
+
+func _on_hurtbox_body_entered(body: Node2D) -> void:
+	print("hit")

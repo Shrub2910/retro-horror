@@ -1,11 +1,14 @@
 [gd_scene format=3 uid="uid://bt0bh0b864xbs"]
 
 [ext_resource type="Script" uid="uid://ddkytsklvyya3" path="res://player.gd" id="1_onrkg"]
+[ext_resource type="Texture2D" uid="uid://c00xw3jqpf17" path="res://player_anims.png" id="3_2hs0m"]
 [ext_resource type="Texture2D" uid="uid://btbg76biwu21l" path="res://player_anims2.png" id="3_hqtel"]
-[ext_resource type="Texture2D" uid="uid://drsupcamwlaxp" path="res://LightSprite.png" id="3_i3pqv"]
+[ext_resource type="Texture2D" uid="uid://c41dxdjiyev4l" path="res://flashlight texture 2.png" id="3_sweqy"]
+[ext_resource type="Texture2D" uid="uid://dpg6qsqf2yagn" path="res://shadow texture.png" id="4_hqtel"]
+[ext_resource type="Texture2D" uid="uid://c4lypqbj65to7" path="res://icon.svg" id="6_2hs0m"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4flbx"]
-size = Vector2(84, 110)
+size = Vector2(12, 15)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i3pqv"]
 atlas = ExtResource("3_hqtel")
@@ -14,6 +17,14 @@ region = Rect2(0, 0, 16, 16)
 [sub_resource type="AtlasTexture" id="AtlasTexture_hqtel"]
 atlas = ExtResource("3_hqtel")
 region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1jxqw"]
+atlas = ExtResource("3_2hs0m")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n7ghd"]
+atlas = ExtResource("3_2hs0m")
+region = Rect2(48, 0, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sweqy"]
 atlas = ExtResource("3_hqtel")
@@ -40,8 +51,19 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_hqtel")
 }],
-"loop": true,
+"loop": 1,
 "name": &"Idle",
+"speed": 1.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1jxqw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n7ghd")
+}],
+"loop": 1,
+"name": &"Idle_up",
 "speed": 1.0
 }, {
 "frames": [{
@@ -51,7 +73,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_2hs0m")
 }],
-"loop": true,
+"loop": 1,
 "name": &"Walking",
 "speed": 4.0
 }, {
@@ -62,36 +84,88 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_b26j0")
 }],
-"loop": true,
+"loop": 1,
 "name": &"Walking_up",
 "speed": 4.0
 }]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_487v6"]
+radius = 9.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_487v6"]
+size = Vector2(12, 15)
+
 [node name="PlayerCharacter" type="CharacterBody2D" unique_id=687693305]
 script = ExtResource("1_onrkg")
+speed = 50
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1033953632]
+position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_4flbx")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=510291323]
+self_modulate = Color(0.44291076, 0.44291076, 0.44291073, 1)
+light_mask = 0
 texture_filter = 1
-scale = Vector2(7, 7)
 sprite_frames = SubResource("SpriteFrames_i3pqv")
-animation = &"Walking_up"
+animation = &"Idle_up"
 autoplay = "Idle"
-frame_progress = 0.6553355
 
-[node name="PlayerCamera" type="Camera2D" parent="." unique_id=878512971]
-position_smoothing_enabled = true
+[node name="ColorRect" type="ColorRect" parent="." unique_id=534128155]
+visible = false
+z_index = -1
+offset_left = -606.0
+offset_top = -373.0
+offset_right = 429.0
+offset_bottom = 426.0
+color = Color(0.25565878, 0.25565878, 0.25565878, 1)
 
-[node name="Light" type="PointLight2D" parent="PlayerCamera" unique_id=1065233127]
-scale = Vector2(0.8, 0.8)
+[node name="PickupArea" type="Area2D" parent="." unique_id=1547794203]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PickupArea" unique_id=859449885]
+shape = SubResource("CircleShape2D_487v6")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1393404971]
+visible = false
+light_mask = 4
+z_index = -2
+offset_left = -400.0
+offset_top = -271.4286
+offset_right = 2700.0
+offset_bottom = 1635.7142
+texture = ExtResource("6_2hs0m")
+stretch_mode = 1
+
+[node name="PlayerCamera" type="Camera2D" parent="." unique_id=1464354254]
+
+[node name="Light" type="PointLight2D" parent="PlayerCamera" unique_id=1308220477]
+scale = Vector2(0.14, 0.14)
 shadow_enabled = true
-texture = ExtResource("3_i3pqv")
+texture = ExtResource("3_sweqy")
+offset = Vector2(0, -512)
 
-[node name="Shadow" type="PointLight2D" parent="PlayerCamera" unique_id=1214121141]
-scale = Vector2(15, 15)
+[node name="TorchMarker1" type="Marker2D" parent="PlayerCamera/Light" unique_id=86252621]
+position = Vector2(-39, 0)
+
+[node name="TorchMarker2" type="Marker2D" parent="PlayerCamera/Light" unique_id=1394380645]
+position = Vector2(40, 0)
+
+[node name="Shadow" type="PointLight2D" parent="PlayerCamera" unique_id=1508207927]
+scale = Vector2(21, 12.6)
 blend_mode = 1
 shadow_enabled = true
-shadow_item_cull_mask = 2
-texture = ExtResource("3_i3pqv")
+shadow_item_cull_mask = 3
+texture = ExtResource("4_hqtel")
+
+[node name="hurtbox" type="Area2D" parent="." unique_id=1602265735]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hurtbox" unique_id=333545373]
+position = Vector2(0, 0.5)
+shape = SubResource("RectangleShape2D_487v6")
+
+[connection signal="area_entered" from="PickupArea" to="." method="_on_pickup_area_area_entered"]
+[connection signal="body_entered" from="hurtbox" to="." method="_on_hurtbox_body_entered"]
