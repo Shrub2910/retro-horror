@@ -1,14 +1,16 @@
 [gd_scene format=3 uid="uid://bt0bh0b864xbs"]
 
 [ext_resource type="Script" uid="uid://ddkytsklvyya3" path="res://player.gd" id="1_onrkg"]
-[ext_resource type="Texture2D" uid="uid://c00xw3jqpf17" path="res://player_anims.png" id="3_2hs0m"]
-[ext_resource type="Texture2D" uid="uid://btbg76biwu21l" path="res://player_anims2.png" id="3_hqtel"]
-[ext_resource type="Texture2D" uid="uid://c41dxdjiyev4l" path="res://flashlight texture 2.png" id="3_sweqy"]
-[ext_resource type="Texture2D" uid="uid://dpg6qsqf2yagn" path="res://shadow texture.png" id="4_hqtel"]
-[ext_resource type="Texture2D" uid="uid://c4lypqbj65to7" path="res://icon.svg" id="6_2hs0m"]
+[ext_resource type="Texture2D" uid="uid://c00xw3jqpf17" path="res://assets/player_anims.png" id="3_2hs0m"]
+[ext_resource type="Texture2D" uid="uid://btbg76biwu21l" path="res://assets/player_anims2.png" id="3_hqtel"]
+[ext_resource type="Texture2D" uid="uid://paxoul60rhd6" path="res://assets/flashlight.png" id="5_sweqy"]
+[ext_resource type="Texture2D" uid="uid://c4lypqbj65to7" path="res://assets/icon.svg" id="6_2hs0m"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4flbx"]
 size = Vector2(12, 15)
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_vbegm"]
+light_mode = 1
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i3pqv"]
 atlas = ExtResource("3_hqtel")
@@ -106,7 +108,9 @@ shape = SubResource("RectangleShape2D_4flbx")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=510291323]
 self_modulate = Color(0.44291076, 0.44291076, 0.44291073, 1)
 light_mask = 0
+z_index = 1
 texture_filter = 1
+material = SubResource("CanvasItemMaterial_vbegm")
 sprite_frames = SubResource("SpriteFrames_i3pqv")
 animation = &"Idle_up"
 autoplay = "Idle"
@@ -140,25 +144,6 @@ stretch_mode = 1
 
 [node name="PlayerCamera" type="Camera2D" parent="." unique_id=1464354254]
 
-[node name="Light" type="PointLight2D" parent="PlayerCamera" unique_id=1308220477]
-scale = Vector2(0.14, 0.14)
-shadow_enabled = true
-texture = ExtResource("3_sweqy")
-offset = Vector2(0, -512)
-
-[node name="TorchMarker1" type="Marker2D" parent="PlayerCamera/Light" unique_id=86252621]
-position = Vector2(-39, 0)
-
-[node name="TorchMarker2" type="Marker2D" parent="PlayerCamera/Light" unique_id=1394380645]
-position = Vector2(40, 0)
-
-[node name="Shadow" type="PointLight2D" parent="PlayerCamera" unique_id=1508207927]
-scale = Vector2(21, 12.6)
-blend_mode = 1
-shadow_enabled = true
-shadow_item_cull_mask = 3
-texture = ExtResource("4_hqtel")
-
 [node name="hurtbox" type="Area2D" parent="." unique_id=1602265735]
 collision_layer = 0
 collision_mask = 4
@@ -166,6 +151,11 @@ collision_mask = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hurtbox" unique_id=333545373]
 position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_487v6")
+
+[node name="Light" type="PointLight2D" parent="." unique_id=1999828418]
+texture = ExtResource("5_sweqy")
+offset = Vector2(81, 0)
+texture_scale = 0.2
 
 [connection signal="area_entered" from="PickupArea" to="." method="_on_pickup_area_area_entered"]
 [connection signal="body_entered" from="hurtbox" to="." method="_on_hurtbox_body_entered"]

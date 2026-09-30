@@ -5,6 +5,7 @@ var dir := Vector2.ZERO
 @export var inventory := []
 @export var torch_speed := 10
 
+
 func _process(delta: float) -> void:
 	dir = Input.get_vector("Left","Right","Up","Down").normalized()
 		
@@ -24,7 +25,7 @@ func _process(delta: float) -> void:
 		elif $AnimatedSprite2D.animation != "Idle_up":
 			$AnimatedSprite2D.play("Idle")
 		
-	$PlayerCamera/Light.rotation = lerp_angle($PlayerCamera/Light.rotation,get_angle_to(get_global_mouse_position()) + PI/2,delta*torch_speed)
+	$Light.rotation = lerp_angle($Light.rotation, get_angle_to(get_global_mouse_position()), delta*torch_speed)
 	#if dir == Vector2.LEFT:
 		#$PlayerCamera/Light.rotation = lerp($PlayerCamera/Light.rotation,deg_to_rad(270),.5)
 	#elif dir == Vector2.RIGHT:

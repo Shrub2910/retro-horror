@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bd6goy3hhpbwf"]
 
 [ext_resource type="Script" uid="uid://dhfr0bryev50c" path="res://ghost.gd" id="1_6attn"]
-[ext_resource type="Texture2D" uid="uid://dk7qtas6s5x3j" path="res://ghoist.png" id="2_6attn"]
+[ext_resource type="Texture2D" uid="uid://dk7qtas6s5x3j" path="res://assets/ghoist.png" id="2_6attn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_487v6"]
 size = Vector2(6, 7)
