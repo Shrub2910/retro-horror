@@ -1,8 +1,7 @@
 [gd_scene format=3 uid="uid://bt0bh0b864xbs"]
 
 [ext_resource type="Script" uid="uid://ddkytsklvyya3" path="res://player.gd" id="1_onrkg"]
-[ext_resource type="Texture2D" uid="uid://c00xw3jqpf17" path="res://assets/player_anims.png" id="3_2hs0m"]
-[ext_resource type="Texture2D" uid="uid://btbg76biwu21l" path="res://assets/player_anims2.png" id="3_hqtel"]
+[ext_resource type="Texture2D" uid="uid://sh7nob5jxyn8" path="res://assets/player-Sheet.png" id="2_hqtel"]
 [ext_resource type="Texture2D" uid="uid://paxoul60rhd6" path="res://assets/flashlight.png" id="5_sweqy"]
 [ext_resource type="Texture2D" uid="uid://c4lypqbj65to7" path="res://assets/icon.svg" id="6_2hs0m"]
 
@@ -12,83 +11,45 @@ size = Vector2(12, 15)
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_vbegm"]
 light_mode = 1
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_i3pqv"]
-atlas = ExtResource("3_hqtel")
-region = Rect2(0, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_hqtel"]
-atlas = ExtResource("3_hqtel")
-region = Rect2(16, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1jxqw"]
-atlas = ExtResource("3_2hs0m")
-region = Rect2(32, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_n7ghd"]
-atlas = ExtResource("3_2hs0m")
-region = Rect2(48, 0, 16, 16)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_sweqy"]
-atlas = ExtResource("3_hqtel")
-region = Rect2(32, 0, 16, 16)
+atlas = ExtResource("2_hqtel")
+region = Rect2(8, 0, 8, 8)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2hs0m"]
-atlas = ExtResource("3_hqtel")
-region = Rect2(48, 0, 16, 16)
+atlas = ExtResource("2_hqtel")
+region = Rect2(8, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1jxqw"]
+atlas = ExtResource("2_hqtel")
+region = Rect2(0, 0, 8, 8)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dw050"]
-atlas = ExtResource("3_hqtel")
-region = Rect2(64, 0, 16, 16)
+atlas = ExtResource("2_hqtel")
+region = Rect2(16, 0, 8, 8)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_b26j0"]
-atlas = ExtResource("3_hqtel")
-region = Rect2(80, 0, 16, 16)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_i3pqv"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_ltxp3"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_i3pqv")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_hqtel")
+"texture": SubResource("AtlasTexture_sweqy")
 }],
 "loop": 1,
 "name": &"Idle",
-"speed": 1.0
+"speed": 5.0
 }, {
 "frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2hs0m")
+}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_1jxqw")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_n7ghd")
-}],
-"loop": 1,
-"name": &"Idle_up",
-"speed": 1.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_sweqy")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_2hs0m")
+"texture": SubResource("AtlasTexture_dw050")
 }],
 "loop": 1,
 "name": &"Walking",
-"speed": 4.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_dw050")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_b26j0")
-}],
-"loop": 1,
-"name": &"Walking_up",
-"speed": 4.0
+"speed": 5.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_487v6"]
@@ -97,9 +58,11 @@ radius = 9.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_487v6"]
 size = Vector2(12, 15)
 
-[node name="PlayerCharacter" type="CharacterBody2D" unique_id=687693305]
+[node name="PlayerCharacter" type="CharacterBody2D" unique_id=687693305 node_paths=PackedStringArray("sprite", "light")]
 script = ExtResource("1_onrkg")
 speed = 50
+sprite = NodePath("AnimatedSprite2D")
+light = NodePath("Light")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1033953632]
 position = Vector2(0, 0.5)
@@ -111,9 +74,11 @@ light_mask = 0
 z_index = 1
 texture_filter = 1
 material = SubResource("CanvasItemMaterial_vbegm")
-sprite_frames = SubResource("SpriteFrames_i3pqv")
-animation = &"Idle_up"
-autoplay = "Idle"
+rotation = 1.5702091
+sprite_frames = SubResource("SpriteFrames_ltxp3")
+animation = &"Walking"
+frame = 1
+frame_progress = 0.99091756
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=534128155]
 visible = false

@@ -8,7 +8,7 @@ func _process(delta: float) -> void:
 	var angle_to_self = player.get_angle_to(self.global_position)
 	var angle_to_mouse = player.get_angle_to(get_global_mouse_position())
 	
-	var player_look_direction = (get_global_mouse_position() - player.position).normalized()
+	var player_look_direction = player.transform.x
 	
 	if not (player_look_direction.dot((position - player.position).normalized()) > 0.9 and (position - player.position).length() < 100):
 		velocity = Vector2.from_angle(get_angle_to(player.global_position)).normalized() * speed
