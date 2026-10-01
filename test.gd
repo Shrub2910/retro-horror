@@ -11,5 +11,5 @@ func _ready() -> void:
 	player.global_position = Vector2(0, 0)
 	ghoist = ghoist_scene.instantiate()
 	add_child(ghoist)
-	ghoist.global_position = Vector2(0, 0)
+	ghoist.global_position = Vector2(0, 100)
 	ghoist.player = player
