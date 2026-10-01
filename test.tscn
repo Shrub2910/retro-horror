@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://bt0bh0b864xbs" path="res://player.tscn" id="1_37kl0"]
 [ext_resource type="Script" uid="uid://trm41675mtlm" path="res://test.gd" id="1_vbegm"]
 [ext_resource type="PackedScene" uid="uid://bd6goy3hhpbwf" path="res://ghost.tscn" id="3_g14j6"]
-[ext_resource type="PackedScene" uid="uid://yftdkhpo68em" path="res://object.tscn" id="6_g14j6"]
+[ext_resource type="PackedScene" uid="uid://b6thpl1qao63t" path="res://coin.tscn" id="6_g14j6"]
 [ext_resource type="Texture2D" uid="uid://cvkyag5ahr8by" path="res://assets/floor.png" id="6_vbegm"]
 [ext_resource type="Texture2D" uid="uid://cm8jdy1fo4ju4" path="res://assets/wall-Sheet.png" id="7_vbegm"]
 
@@ -43,8 +43,6 @@ script = ExtResource("1_vbegm")
 player_scene = ExtResource("1_37kl0")
 ghoist_scene = ExtResource("3_g14j6")
 
-[node name="object" parent="." unique_id=367312554 instance=ExtResource("6_g14j6")]
-
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=2132870853]
 z_index = -1
 texture_filter = 1
@@ -53,3 +51,6 @@ tile_set = SubResource("TileSet_487v6")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=37973473]
 color = Color(0, 0, 0, 1)
+
+[node name="Coin" parent="." unique_id=1106543758 instance=ExtResource("6_g14j6")]
+position = Vector2(33, 40)

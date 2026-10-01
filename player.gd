@@ -46,9 +46,14 @@ func rotation_lerp(from,to,weight):
 		lerp(from,deg_to_rad(rad_to_deg(to)*-1),weight)
 
 func _on_pickup_area_area_entered(area: Area2D) -> void:
-	inventory.append(area.get_meta("Item"))
+	inventory.append(area.get_parent().get_meta("Item"))
 	print(inventory[0])
-	area.get_parent().queue_free()
+	area.get_parent().call_deferred("reparent",self)
+	area.get_parent().global_position = global_position + Vector2(0,-10)
+	area.get_parent().frame = 0
+	area.get_parent().speed_scale = 2
+	area.get_parent().collected = true
+	area.get_parent().play("Spin")
 
 
 func _on_hurtbox_body_entered(body: Node2D) -> void:
