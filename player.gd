@@ -6,6 +6,7 @@ var dir := Vector2.ZERO
 @export var rotation_speed := 10
 @export var sprite: AnimatedSprite2D
 @export var light: PointLight2D
+var door_layer
 
 
 func _process(delta: float) -> void:
