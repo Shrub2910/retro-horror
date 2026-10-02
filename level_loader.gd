@@ -2,6 +2,7 @@ extends Node
 
 @export var player_scene: PackedScene
 @export var enemy_scene: PackedScene
+@export var inventory: Inventory
 
 var levels: Array[String]
 var loaded_levels: Array[Node]
@@ -52,6 +53,9 @@ func level_teardown():
 				door.change_level.disconnect(load_level)
 				
 	call_deferred("remove_child",current_level)
+	
+func remove_item(item: Item):
+	current_level.call_deferred("remove_child", item)
 
 func load_level(is_going_up: bool):
 	var level_number = current_level_number + (1 if is_going_up else - 1)
@@ -77,10 +81,8 @@ func load_level(is_going_up: bool):
 	player.position = get_player_spawn_location(not is_going_up)
 	current_level.call_deferred("add_child",player)
 	current_player = player
+	current_player.picked_up_item.connect(remove_item)
+	current_player.inventory = inventory
 	
 	spawn_enemies()
 	connect_level_triggers()
-		
-	
-	
-	

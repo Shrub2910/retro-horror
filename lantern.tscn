@@ -1,7 +1,11 @@
 [gd_scene format=3 uid="uid://d1g3akdb315t2"]
 
 [ext_resource type="Texture2D" uid="uid://sxalc5ee8apu" path="res://assets/lantern-Sheet.png" id="1_kxgpu"]
+[ext_resource type="Script" uid="uid://xsh4vs8648e2" path="res://lantern.gd" id="1_s57vn"]
 [ext_resource type="Texture2D" uid="uid://5h2errhyllxk" path="res://assets/LightSprite.png" id="2_aeluj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8uwsg"]
+size = Vector2(6, 8)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_aeluj"]
 atlas = ExtResource("1_kxgpu")
@@ -39,21 +43,21 @@ animations = [{
 "speed": 7.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_8uwsg"]
-size = Vector2(6, 8)
+[node name="latern" type="Area2D" unique_id=1490110675]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_s57vn")
+item_name = "Lantern"
+requires_interact = true
 
-[node name="lantern" type="AnimatedSprite2D" unique_id=1312645980]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2058585664]
+shape = SubResource("RectangleShape2D_8uwsg")
+
+[node name="lantern" type="AnimatedSprite2D" parent="." unique_id=1312645980]
 sprite_frames = SubResource("SpriteFrames_487v6")
 autoplay = "default"
 frame_progress = 0.32323515
 metadata/Item = "Lantern"
-
-[node name="Area2D" type="Area2D" parent="." unique_id=1490110675]
-collision_layer = 4
-collision_mask = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=2058585664]
-shape = SubResource("RectangleShape2D_8uwsg")
 
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=960424977]
 scale = Vector2(0.5, 0.5)

@@ -1,7 +1,11 @@
 [gd_scene format=3 uid="uid://8fk0dlibnyhb"]
 
 [ext_resource type="Texture2D" uid="uid://b3quq527oce8k" path="res://assets/battery2.png" id="1_0ps0c"]
+[ext_resource type="Script" uid="uid://btxje34mmh313" path="res://battery.gd" id="1_qise7"]
 [ext_resource type="Texture2D" uid="uid://5h2errhyllxk" path="res://assets/LightSprite.png" id="2_8fmpm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0ps0c"]
+size = Vector2(8, 4)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8fmpm"]
 atlas = ExtResource("1_0ps0c")
@@ -18,20 +22,18 @@ animations = [{
 "speed": 0.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0ps0c"]
-size = Vector2(8, 4)
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" unique_id=139530575]
-sprite_frames = SubResource("SpriteFrames_wj1ai")
-metadata/Item = "Battery"
-
-[node name="Area2D" type="Area2D" parent="." unique_id=785681338]
-visible = false
+[node name="Battery" type="Area2D" unique_id=785681338]
 collision_layer = 4
 collision_mask = 0
+script = ExtResource("1_qise7")
+item_name = "Battery"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1755066117]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1755066117]
 shape = SubResource("RectangleShape2D_0ps0c")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=139530575]
+sprite_frames = SubResource("SpriteFrames_wj1ai")
+metadata/Item = "Battery"
 
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=1695246726]
 color = Color(0.3137255, 0.45490196, 0, 1)

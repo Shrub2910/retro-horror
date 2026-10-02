@@ -3,6 +3,9 @@
 [ext_resource type="Texture2D" uid="uid://bvf87iqa52xsn" path="res://assets/coin-Sheet.png" id="1_d5gmh"]
 [ext_resource type="Script" uid="uid://bajgn7cvu604h" path="res://coin.gd" id="2_0t63x"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_487v6"]
+radius = 5.0
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_0t63x"]
 atlas = ExtResource("1_d5gmh")
 region = Rect2(0, 0, 8, 8)
@@ -98,23 +101,22 @@ animations = [{
 "speed": 15.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_487v6"]
-radius = 5.0
+[node name="Coin" type="Area2D" unique_id=574880154 node_paths=PackedStringArray("sprite")]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("2_0t63x")
+sprite = NodePath("Coin")
+item_name = "Coin"
 
-[node name="Coin" type="AnimatedSprite2D" unique_id=1106543758]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1056827975]
+shape = SubResource("CircleShape2D_487v6")
+
+[node name="Coin" type="AnimatedSprite2D" parent="." unique_id=1106543758]
 self_modulate = Color(1, 0.9254902, 0, 1)
 sprite_frames = SubResource("SpriteFrames_487v6")
 animation = &"Spin"
 autoplay = "Spin"
-script = ExtResource("2_0t63x")
 metadata/Item = "Coin"
 
-[node name="Area2D" type="Area2D" parent="." unique_id=574880154]
-collision_layer = 4
-collision_mask = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1056827975]
-shape = SubResource("CircleShape2D_487v6")
-
-[connection signal="animation_finished" from="." to="." method="_on_animation_finished"]
-[connection signal="frame_changed" from="." to="." method="_on_frame_changed"]
+[connection signal="animation_finished" from="Coin" to="Coin" method="_on_animation_finished"]
+[connection signal="frame_changed" from="Coin" to="Coin" method="_on_frame_changed"]

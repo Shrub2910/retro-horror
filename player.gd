@@ -3,14 +3,19 @@ class_name Player
 
 var dir := Vector2.ZERO
 @export var speed := 400
-@export var inventory := []
 @export var rotation_speed := 10
 @export var sprite: AnimatedSprite2D
 @export var light: PointLight2D
-@export var basic_key_count := 0
+@export var lantern: PointLight2D
 @export var is_using_controller := false
-var door_layer
+@export var battery_time = 30
 
+signal picked_up_item(item: Item)
+
+var door_layer
+var can_use_torch = true
+var wants_to_use_torch = false
+var inventory: Inventory
 
 func _process(delta: float) -> void:
 	dir = Input.get_vector("Left","Right","Up","Down").normalized()
@@ -30,32 +35,43 @@ func _process(delta: float) -> void:
 		rotation = lerp_angle(rotation, (get_global_mouse_position() - global_position).angle(), delta*rotation_speed)
 	velocity = dir * speed
 	
+	if Input.is_action_just_pressed("Toggle_light"):
+		wants_to_use_torch = not wants_to_use_torch
+	
+	can_use_torch = inventory.battery_percentage > 0
+		
+	light.visible = can_use_torch and wants_to_use_torch
+		
+	if light.visible:
+		inventory.battery_percentage -= (delta/battery_time) * 100
+		if inventory.battery_percentage < 0: inventory.battery_percentage = 0
+		
+	if Input.is_action_just_pressed("Interact"):
+		if not inventory.current_item: return 
+		inventory.current_item.use(self)
+		inventory.current_item = null
+		
+	inventory.lantern_time_left -= delta 
+	if inventory.lantern_time_left < 0: inventory.lantern_time_left = 0
+		
+	lantern.visible = inventory.lantern_time_left > 0
+	
 	move_and_slide()
 	
-	if Input.is_action_just_pressed("Toggle_light"):
-		if light.visible:
-			light.hide()
-		else:
-			light.show()
-
 func _on_pickup_area_area_entered(area: Area2D) -> void:
-	var object = area.get_parent()
-	var item = object.get_meta("Item")
-	if item == "Basic key":
-		basic_key_count += 1
-	else:
-		inventory.append(item)
-		print(inventory[len(inventory)-1])
-	if item == "Coin":
-		object.call_deferred("reparent",self)
-		object.global_position = global_position + Vector2(0,-10)
-		object.frame = 0
-		object.speed_scale = 2
-		object.collected = true
-		object.play("Spin")
-	else:
-		object.queue_free()
-
-
+	if not area is Item: return 
+	var item: Item = area
+	
+	if not item.requires_interact:
+		item.use(self)
+		return
+	
+	if inventory.current_item:
+		return
+	
+	inventory.current_item = item
+	picked_up_item.emit(item)
+	
+	
 func _on_hurtbox_body_entered(body: Node2D) -> void:
 	print("hit")

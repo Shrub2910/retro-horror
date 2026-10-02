@@ -1,7 +1,11 @@
 [gd_scene format=3 uid="uid://d4b1bcdvrjjgb"]
 
+[ext_resource type="Script" uid="uid://4518i6b51whm" path="res://key.gd" id="1_krfvd"]
 [ext_resource type="Texture2D" uid="uid://ds3bs1gu63yd5" path="res://assets/key.png" id="1_up4cr"]
 [ext_resource type="Texture2D" uid="uid://5h2errhyllxk" path="res://assets/LightSprite.png" id="2_p0yg6"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_krfvd"]
+radius = 4.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p0yg6"]
 atlas = ExtResource("1_up4cr")
@@ -18,20 +22,19 @@ animations = [{
 "speed": 0.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_krfvd"]
-radius = 4.0
+[node name="key" type="Area2D" unique_id=1772522062]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_krfvd")
+item_name = "Key"
 
-[node name="Key" type="AnimatedSprite2D" unique_id=709945682]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1930125098]
+shape = SubResource("CircleShape2D_krfvd")
+
+[node name="Key" type="AnimatedSprite2D" parent="." unique_id=709945682]
 self_modulate = Color(1, 1, 0, 1)
 sprite_frames = SubResource("SpriteFrames_487v6")
 metadata/Item = "Basic key"
-
-[node name="Area2D" type="Area2D" parent="." unique_id=1772522062]
-collision_layer = 4
-collision_mask = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1930125098]
-shape = SubResource("CircleShape2D_krfvd")
 
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=1823571978]
 color = Color(0.56430644, 0.34608167, 2.8878452e-07, 1)
