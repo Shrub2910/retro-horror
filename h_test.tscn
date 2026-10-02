@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://btyq2n63pps5p" path="res://door_up.tscn" id="9_ij634"]
 [ext_resource type="PackedScene" uid="uid://rjtv4ngd0hay" path="res://door_left.tscn" id="10_wu3x4"]
 [ext_resource type="PackedScene" uid="uid://b8y6mcb6g8nyb" path="res://door_right.tscn" id="11_wu3x4"]
+[ext_resource type="PackedScene" uid="uid://d4b1bcdvrjjgb" path="res://key.tscn" id="12_26xyx"]
 [ext_resource type="PackedScene" uid="uid://c4dmsn3rhwati" path="res://door_down.tscn" id="12_e1pw2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mk0cl"]
@@ -47,6 +48,7 @@ scenes/2/scene = ExtResource("9_ij634")
 scenes/3/scene = ExtResource("10_wu3x4")
 scenes/4/scene = ExtResource("11_wu3x4")
 scenes/5/scene = ExtResource("12_e1pw2")
+scenes/6/scene = ExtResource("12_26xyx")
 
 [sub_resource type="TileSet" id="TileSet_7uwtt"]
 tile_size = Vector2i(8, 8)
@@ -103,7 +105,7 @@ position = Vector2(33, 40)
 
 [node name="layer2" type="TileMapLayer" parent="." unique_id=699125477]
 y_sort_enabled = true
-tile_map_data = PackedByteArray("AAAGAPn/AwAAAAAAAgAFAPX/AwAAAAAAAQA=")
+tile_map_data = PackedByteArray("AAAGAPn/AwAAAAAAAgAFAPX/AwAAAAAAAQAGAAEAAwAAAAAABgAKAAIAAwAAAAAAAgA=")
 tile_set = SubResource("TileSet_7uwtt")
 
 [node name="layer1" type="TileMapLayer" parent="." unique_id=683687219]

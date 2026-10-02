@@ -6,6 +6,7 @@ var dir := Vector2.ZERO
 @export var rotation_speed := 10
 @export var sprite: AnimatedSprite2D
 @export var light: PointLight2D
+@export var basic_key_count := 0
 var door_layer
 
 
@@ -27,14 +28,22 @@ func rotation_lerp(from,to,weight):
 		lerp(from,deg_to_rad(rad_to_deg(to)*-1),weight)
 
 func _on_pickup_area_area_entered(area: Area2D) -> void:
-	inventory.append(area.get_parent().get_meta("Item"))
-	print(inventory[0])
-	area.get_parent().call_deferred("reparent",self)
-	area.get_parent().global_position = global_position + Vector2(0,-10)
-	area.get_parent().frame = 0
-	area.get_parent().speed_scale = 2
-	area.get_parent().collected = true
-	area.get_parent().play("Spin")
+	var object = area.get_parent()
+	var item = object.get_meta("Item")
+	if item == "Basic key":
+		basic_key_count += 1
+	else:
+		inventory.append(item)
+		print(inventory[len(inventory)-1])
+	if item == "Coin":
+		object.call_deferred("reparent",self)
+		object.global_position = global_position + Vector2(0,-10)
+		object.frame = 0
+		object.speed_scale = 2
+		object.collected = true
+		object.play("Spin")
+	else:
+		object.queue_free()
 
 
 func _on_hurtbox_body_entered(body: Node2D) -> void:
