@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://b2e0q80wdyq8x"]
+
+[ext_resource type="Texture2D" uid="uid://bsrd4aun8u3j8" path="res://assets/glow stick.png" id="1_yr0ju"]
+[ext_resource type="Texture2D" uid="uid://5h2errhyllxk" path="res://assets/LightSprite.png" id="2_c1jxv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c1jxv"]
+atlas = ExtResource("1_yr0ju")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_487v6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c1jxv")
+}],
+"loop": 0,
+"name": &"default",
+"speed": 0.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7uwtt"]
+size = Vector2(6, 2)
+
+[node name="glow_stick" type="AnimatedSprite2D" unique_id=22698736]
+self_modulate = Color(0, 1, 0, 1)
+sprite_frames = SubResource("SpriteFrames_487v6")
+metadata/Item = "Glowstick"
+
+[node name="Area2D" type="Area2D" parent="." unique_id=985390906]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=813418539]
+shape = SubResource("RectangleShape2D_7uwtt")
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1727142815]
+scale = Vector2(0.5, 0.3)
+color = Color(6.317161e-07, 0.31662995, 2.4065375e-07, 1)
+texture = ExtResource("2_c1jxv")
+texture_scale = 0.2

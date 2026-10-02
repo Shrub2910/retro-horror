@@ -45,6 +45,7 @@ position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_487v6")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1063015642]
+light_mask = 2
 sprite_frames = SubResource("SpriteFrames_487v6")
 animation = &"new_animation"
 autoplay = "new_animation"

@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://d1g3akdb315t2"]
+
+[ext_resource type="Texture2D" uid="uid://sxalc5ee8apu" path="res://assets/lantern-Sheet.png" id="1_kxgpu"]
+[ext_resource type="Texture2D" uid="uid://5h2errhyllxk" path="res://assets/LightSprite.png" id="2_aeluj"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aeluj"]
+atlas = ExtResource("1_kxgpu")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s57vn"]
+atlas = ExtResource("1_kxgpu")
+region = Rect2(8, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y7vr3"]
+atlas = ExtResource("1_kxgpu")
+region = Rect2(16, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8u7me"]
+atlas = ExtResource("1_kxgpu")
+region = Rect2(24, 0, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_487v6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aeluj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s57vn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y7vr3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8u7me")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 7.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8uwsg"]
+size = Vector2(6, 8)
+
+[node name="lantern" type="AnimatedSprite2D" unique_id=1312645980]
+sprite_frames = SubResource("SpriteFrames_487v6")
+autoplay = "default"
+frame_progress = 0.32323515
+metadata/Item = "Lantern"
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1490110675]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=2058585664]
+shape = SubResource("RectangleShape2D_8uwsg")
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=960424977]
+scale = Vector2(0.5, 0.5)
+color = Color(1, 0.7372549, 0, 1)
+texture = ExtResource("2_aeluj")
+texture_scale = 0.1
