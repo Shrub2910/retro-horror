@@ -7,6 +7,7 @@ var dir := Vector2.ZERO
 @export var sprite: AnimatedSprite2D
 @export var light: PointLight2D
 @export var basic_key_count := 0
+@export var is_using_controller := false
 var door_layer
 
 
@@ -18,14 +19,23 @@ func _process(delta: float) -> void:
 	else:
 		sprite.play("Idle")
 		
-	rotation = lerp_angle(rotation, (get_global_mouse_position() - global_position).angle(), delta*rotation_speed)
+	if is_using_controller:
+		var look_angle = Vector2(snapped(Input.get_joy_axis(0,JOY_AXIS_RIGHT_X),0.01),snapped(Input.get_joy_axis(0,JOY_AXIS_RIGHT_Y),0.01)).normalized()
+		if look_angle != Vector2.ZERO:
+			rotation = lerp_angle(rotation, look_angle.angle(), delta*rotation_speed)
+		else:
+			pass
+	else:
+		rotation = lerp_angle(rotation, (get_global_mouse_position() - global_position).angle(), delta*rotation_speed)
 	velocity = dir * speed
 	
 	move_and_slide()
-
-func rotation_lerp(from,to,weight):
-	if from > to:
-		lerp(from,deg_to_rad(rad_to_deg(to)*-1),weight)
+	
+	if Input.is_action_just_pressed("Toggle_light"):
+		if light.visible:
+			light.hide()
+		else:
+			light.show()
 
 func _on_pickup_area_area_entered(area: Area2D) -> void:
 	var object = area.get_parent()

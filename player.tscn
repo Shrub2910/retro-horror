@@ -64,6 +64,7 @@ script = ExtResource("1_onrkg")
 speed = 50
 sprite = NodePath("AnimatedSprite2D")
 light = NodePath("Light")
+is_using_controller = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1033953632]
 shape = SubResource("RectangleShape2D_4flbx")
@@ -118,6 +119,7 @@ position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_487v6")
 
 [node name="Light" type="PointLight2D" parent="." unique_id=1999828418]
+range_item_cull_mask = 3
 texture = ExtResource("5_sweqy")
 offset = Vector2(81, 0)
 texture_scale = 0.2

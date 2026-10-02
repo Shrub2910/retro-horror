@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://dntbmsgnbwa0b"]
+
+[ext_resource type="Texture2D" uid="uid://ck66fge4kyp7b" path="res://assets/candle stick light.png" id="1_6lc5l"]
+[ext_resource type="Texture2D" uid="uid://5h2errhyllxk" path="res://assets/LightSprite.png" id="2_lkk6s"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lkk6s"]
+atlas = ExtResource("1_6lc5l")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_487v6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lkk6s")
+}],
+"loop": 0,
+"name": &"default",
+"speed": 0.0
+}]
+
+[node name="candle_stick_light" type="AnimatedSprite2D" unique_id=861883224]
+self_modulate = Color(1, 0.8352941, 0.3647059, 1)
+sprite_frames = SubResource("SpriteFrames_487v6")
+autoplay = "default"
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1245989736]
+position = Vector2(0, -3)
+scale = Vector2(0.75, 0.75)
+color = Color(0.45225018, 0.35341442, 2.8878452e-07, 1)
+texture = ExtResource("2_lkk6s")
+texture_scale = 0.2

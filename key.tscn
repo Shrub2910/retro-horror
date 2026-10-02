@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://d4b1bcdvrjjgb"]
 
 [ext_resource type="Texture2D" uid="uid://ds3bs1gu63yd5" path="res://assets/key.png" id="1_up4cr"]
+[ext_resource type="Texture2D" uid="uid://5h2errhyllxk" path="res://assets/LightSprite.png" id="2_p0yg6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_p0yg6"]
 atlas = ExtResource("1_up4cr")
@@ -31,3 +32,8 @@ collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1930125098]
 shape = SubResource("CircleShape2D_krfvd")
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1823571978]
+color = Color(0.56430644, 0.34608167, 2.8878452e-07, 1)
+texture = ExtResource("2_p0yg6")
+texture_scale = 0.03

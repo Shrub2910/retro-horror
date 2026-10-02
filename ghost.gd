@@ -10,7 +10,7 @@ func _process(delta: float) -> void:
 	
 	var player_look_direction = player.transform.x
 	
-	if not (player_look_direction.dot((position - player.position).normalized()) > 0.9 and (position - player.position).length() < 100):
+	if (not (player_look_direction.dot((position - player.position).normalized()) > 0.9 and (position - player.position).length() < 100) and player.light.visible) or !player.light.visible:
 		velocity = Vector2.from_angle(get_angle_to(player.global_position)).normalized() * speed
 	else:
 		velocity = Vector2.ZERO

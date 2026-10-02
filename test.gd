@@ -8,8 +8,8 @@ var ghoist
 func _ready() -> void:
 	player = player_scene.instantiate()
 	add_child(player)
-	player.global_position = Vector2(0, 0)
+	player.global_position = Vector2(0, 95)
 	ghoist = ghoist_scene.instantiate()
 	add_child(ghoist)
-	ghoist.global_position = Vector2(0, 100)
+	ghoist.global_position = Vector2(0, 0)
 	ghoist.player = player
