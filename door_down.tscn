@@ -35,7 +35,7 @@ size = Vector2(8, 8)
 sprite_frames = SubResource("SpriteFrames_hun61")
 autoplay = "default"
 script = ExtResource("2_mhhsd")
-hitbox = NodePath("StaticBody2D")
+hitbox = NodePath("StaticBody2D/CollisionShape2D")
 area = NodePath("Area2D")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=654698624]

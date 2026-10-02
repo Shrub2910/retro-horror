@@ -36,7 +36,7 @@ sprite_frames = SubResource("SpriteFrames_hun61")
 autoplay = "default"
 script = ExtResource("2_07o8x")
 is_going_up = true
-hitbox = NodePath("StaticBody2D")
+hitbox = NodePath("StaticBody2D/CollisionShape2D")
 area = NodePath("Area2D")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=654698624]
