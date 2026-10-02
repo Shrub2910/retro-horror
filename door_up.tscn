@@ -35,6 +35,7 @@ size = Vector2(8, 8)
 sprite_frames = SubResource("SpriteFrames_hun61")
 autoplay = "default"
 script = ExtResource("2_07o8x")
+is_going_up = true
 hitbox = NodePath("StaticBody2D")
 area = NodePath("Area2D")
 
