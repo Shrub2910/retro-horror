@@ -128,7 +128,8 @@ position = Vector2(85, 41)
 [node name="Key" parent="." unique_id=709945682 instance=ExtResource("12_26xyx")]
 position = Vector2(38, -83)
 
-[node name="door_up2" parent="." unique_id=1052845700 instance=ExtResource("9_ij634")]
+[node name="door_down" parent="." unique_id=1207410230 instance=ExtResource("12_e1pw2")]
 position = Vector2(28, 100)
 is_level_trigger = true
+is_going_up = true
 key_required = true

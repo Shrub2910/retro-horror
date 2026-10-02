@@ -33,7 +33,7 @@ func spawn_enemies():
 		var new_enemy: Ghost = enemy_scene.instantiate()
 		new_enemy.position = enemy_spawner.position
 		new_enemy.player = current_player
-		current_level.add_child(new_enemy)
+		current_level.call_deferred("add_child",new_enemy)
 
 func connect_level_triggers():
 	for child in current_level.get_children():
@@ -47,11 +47,11 @@ func level_teardown():
 			if child is Player or child is Ghost:
 				child.queue_free()
 			
-			if child is Door:
+			if child is Door and child.is_level_trigger:
 				var door: Door = child
 				door.change_level.disconnect(load_level)
 				
-	remove_child(current_level)
+	call_deferred("remove_child",current_level)
 
 func load_level(is_going_up: bool):
 	var level_number = current_level_number + (1 if is_going_up else - 1)
@@ -71,11 +71,11 @@ func load_level(is_going_up: bool):
 		current_level.add_child(canvas_modulate)
 		loaded_levels.append(current_level)
 	
-	add_child(current_level)
+	call_deferred("add_child",current_level)
 	
 	var player: Player = player_scene.instantiate()
 	player.position = get_player_spawn_location(not is_going_up)
-	current_level.add_child(player)
+	current_level.call_deferred("add_child",player)
 	current_player = player
 	
 	spawn_enemies()
