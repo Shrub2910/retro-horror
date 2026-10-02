@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://c4dmsn3rhwati"]
+
+[ext_resource type="Texture2D" uid="uid://dx4h8cumwnoht" path="res://assets/door-Sheet.png" id="1_cy4av"]
+[ext_resource type="Script" uid="uid://dn6fs6de24e3f" path="res://door.gd" id="2_mhhsd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v6xrn"]
+atlas = ExtResource("1_cy4av")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0phs7"]
+atlas = ExtResource("1_cy4av")
+region = Rect2(8, 0, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hun61"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v6xrn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0phs7")
+}],
+"loop": 2,
+"name": &"default",
+"speed": 0.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_07o8x"]
+size = Vector2(8, 9)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hawwb"]
+size = Vector2(8, 8)
+
+[node name="door_down" type="AnimatedSprite2D" unique_id=1934664814 node_paths=PackedStringArray("hitbox", "area")]
+sprite_frames = SubResource("SpriteFrames_hun61")
+autoplay = "default"
+script = ExtResource("2_mhhsd")
+hitbox = NodePath("StaticBody2D")
+area = NodePath("Area2D")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=654698624]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=430001318]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_07o8x")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=657702838]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1477430824]
+shape = SubResource("RectangleShape2D_hawwb")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

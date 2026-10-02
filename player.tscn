@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://c4lypqbj65to7" path="res://assets/icon.svg" id="6_2hs0m"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4flbx"]
-size = Vector2(12, 15)
+size = Vector2(4, 6)
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_vbegm"]
 light_mode = 1
@@ -59,13 +59,13 @@ radius = 9.0
 size = Vector2(12, 15)
 
 [node name="PlayerCharacter" type="CharacterBody2D" unique_id=687693305 node_paths=PackedStringArray("sprite", "light")]
+collision_layer = 9
 script = ExtResource("1_onrkg")
 speed = 50
 sprite = NodePath("AnimatedSprite2D")
 light = NodePath("Light")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1033953632]
-position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_4flbx")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=510291323]
