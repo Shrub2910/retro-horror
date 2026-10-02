@@ -66,6 +66,9 @@ func load_level(is_going_up: bool):
 	else:
 		var level_scene: PackedScene = load(levels[randi_range(0, levels.size() -1)])
 		current_level = level_scene.instantiate()
+		var canvas_modulate := CanvasModulate.new()
+		canvas_modulate.color = Color.BLACK
+		current_level.add_child(canvas_modulate)
 		loaded_levels.append(current_level)
 	
 	add_child(current_level)
@@ -77,7 +80,6 @@ func load_level(is_going_up: bool):
 	
 	spawn_enemies()
 	connect_level_triggers()
-	
 		
 	
 	
