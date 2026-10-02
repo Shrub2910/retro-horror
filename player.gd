@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name Player
 
 var dir := Vector2.ZERO
 @export var speed := 400

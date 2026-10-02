@@ -1,4 +1,5 @@
 extends CharacterBody2D
+class_name Ghost
 
 var player: CharacterBody2D
 @export var speed := 80
