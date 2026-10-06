@@ -121,6 +121,9 @@ position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_487v6")
 
 [node name="Light" type="PointLight2D" parent="." unique_id=1999828418]
+position = Vector2(-1.1000001, 0)
+scale = Vector2(2.1, 1)
+color = Color(0.3854925, 0.38549247, 0.38549247, 1)
 range_item_cull_mask = 3
 texture = ExtResource("5_sweqy")
 offset = Vector2(81, 0)
