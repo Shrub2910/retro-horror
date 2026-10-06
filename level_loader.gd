@@ -55,20 +55,36 @@ func level_teardown():
 			if child is Door and child.is_level_trigger:
 				var door: Door = child
 				door.change_level.disconnect(load_level)
-				
+			
+	current_player.picked_up_item.disconnect(remove_item)
+	disconnect_player_hit()
 	call_deferred("remove_child",current_level)
 	
 func remove_item(item: Item):
 	current_level.call_deferred("remove_child", item)
+	
+func restart_game():
+	for level in loaded_levels:
+		level.queue_free()
+	loaded_levels = []
+	current_level_number = -1
+	current_player.inventory.reset()
+	load_level(true)
+	
+func connect_player_hit():
+	current_player.player_hit.connect(restart_game)
+
+func disconnect_player_hit():
+	current_player.player_hit.connect(restart_game)
 
 func load_level(is_going_up: bool):
 	var level_number = current_level_number + (1 if is_going_up else - 1)
-	ui_label.text = "Room "+str(current_level_number+2)
 	
 	if current_level:
 		level_teardown()
 	
 	current_level_number = level_number 
+	ui_label.text = "Room "+str(current_level_number+1)
 	
 	if current_level_number < loaded_levels.size():
 		current_level = loaded_levels[current_level_number]
@@ -89,6 +105,7 @@ func load_level(is_going_up: bool):
 	current_player = player
 	current_player.picked_up_item.connect(remove_item)
 	current_player.inventory = inventory
+	connect_player_hit()
 	
 	spawn_enemies()
 	connect_level_triggers()
