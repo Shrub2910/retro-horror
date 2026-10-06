@@ -12,6 +12,7 @@ var dir := Vector2.ZERO
 @export var camera : Camera2D
 
 signal picked_up_item(item: Item)
+signal player_hit
 
 var door_layer
 var can_use_torch = true
@@ -75,4 +76,5 @@ func _on_pickup_area_area_entered(area: Area2D) -> void:
 	
 	
 func _on_hurtbox_body_entered(body: Node2D) -> void:
-	print("hit")
+	if not body is Ghost: return
+	player_hit.emit()
