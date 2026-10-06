@@ -291,7 +291,7 @@ tile_set = SubResource("TileSet_487v6")
 
 [node name="layer3" type="TileMapLayer" parent="." unique_id=1630835298]
 y_sort_enabled = true
-tile_map_data = PackedByteArray("AADw//b/AwAAAAAABwDw/wYAAwAAAAAABwAFAAYAAwAAAAAABwARAAgAAwAAAAAABwAFAAQAAwAAAAAAAQAIAAEAAwAAAAAACAD1/wgAAwAAAAAACAABAP3/AwAAAAAABwALAPT/AwAAAAAABwAOAPX/CgAAAAAAAADv//3/BAAAAAAAAADv//7/BAAAAAEAAADw//3/BAABAAAAAADw//7/BAABAAEAAADx//7/BQAAAAAAAAD0//X/CgAAAAAAAAD//wMACgAAAAAAAADy/wAABwAAAAAAAADy/wEABwAAAAEAAADt/wEABwAAAAEAAADt/wAABwAAAAAAAADt//r/BwAAAAAAAADt//v/BwAAAAEAAADy//r/BwAAAAAAAADy//v/BwAAAAEAAADv////BQAAAAAAAADu//3/BQAAAAAAAADu/wcACgAAAAAAAADy//z/CgAAAAAAAAA=")
+tile_map_data = PackedByteArray("AADw//b/AwAAAAAABwDw/wYAAwAAAAAABwAFAAYAAwAAAAAABwARAAgAAwAAAAAABwABAP3/AwAAAAAABwALAPT/AwAAAAAABwAOAPX/CgAAAAAAAADv//3/BAAAAAAAAADv//7/BAAAAAEAAADw//3/BAABAAAAAADw//7/BAABAAEAAADx//7/BQAAAAAAAAD0//X/CgAAAAAAAAD//wMACgAAAAAAAADy/wAABwAAAAAAAADy/wEABwAAAAEAAADt/wEABwAAAAEAAADt/wAABwAAAAAAAADt//r/BwAAAAAAAADt//v/BwAAAAEAAADy//r/BwAAAAAAAADy//v/BwAAAAEAAADv////BQAAAAAAAADu//3/BQAAAAAAAADu/wcACgAAAAAAAADy//z/CgAAAAAAAAA=")
 tile_set = SubResource("TileSet_i0y1q")
 
 [node name="door_right" parent="." unique_id=1646856157 instance=ExtResource("14_cik2g")]
@@ -302,3 +302,12 @@ key_required = true
 
 [node name="key" parent="." unique_id=1772522062 instance=ExtResource("25_uggb1")]
 position = Vector2(156, -93)
+
+[node name="Chest" parent="." unique_id=254101374 instance=ExtResource("13_j7g80")]
+position = Vector2(44, 68)
+
+[node name="Battery" parent="." unique_id=785681338 instance=ExtResource("18_6modo")]
+position = Vector2(161, 64)
+
+[node name="Battery2" parent="." unique_id=1788450895 instance=ExtResource("18_6modo")]
+position = Vector2(-86, 63)
