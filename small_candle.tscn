@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://sdv10mqlwjh4"]
+
+[ext_resource type="Texture2D" uid="uid://ddvbdubbxed1y" path="res://assets/small candle fire.png" id="1_hshgq"]
+[ext_resource type="Texture2D" uid="uid://dvwgynhjrath" path="res://assets/small candle.png" id="2_dg2of"]
+[ext_resource type="Texture2D" uid="uid://5h2errhyllxk" path="res://assets/LightSprite.png" id="3_dg2of"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_44rrv"]
+atlas = ExtResource("1_hshgq")
+region = Rect2(0, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r32xv"]
+atlas = ExtResource("1_hshgq")
+region = Rect2(8, 0, 8, 8)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dg2of"]
+atlas = ExtResource("1_hshgq")
+region = Rect2(16, 0, 8, 8)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_487v6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_44rrv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r32xv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dg2of")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 6.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rp140"]
+size = Vector2(2, 8)
+
+[node name="small candle" type="AnimatedSprite2D" unique_id=1490907549]
+self_modulate = Color(1, 0.40392157, 0, 1)
+sprite_frames = SubResource("SpriteFrames_487v6")
+autoplay = "default"
+frame_progress = 0.69296265
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=616652939]
+texture = ExtResource("2_dg2of")
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1161971348]
+position = Vector2(0, -3)
+color = Color(0.37317136, 0.1767155, 9.62615e-08, 1)
+texture = ExtResource("3_dg2of")
+texture_scale = 0.08
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=1150958566]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=1357403807]
+shape = SubResource("RectangleShape2D_rp140")
