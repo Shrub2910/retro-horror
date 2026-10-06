@@ -79,7 +79,7 @@ func disconnect_player_hit():
 
 func load_level(is_going_up: bool):
 	var level_number = current_level_number + (1 if is_going_up else - 1)
-	
+		
 	if current_level:
 		level_teardown()
 	
