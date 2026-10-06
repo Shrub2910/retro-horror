@@ -7,17 +7,31 @@ extends Node
 @export var ui_label:Label
 @export var throwable_scene : PackedScene
 @export var light_percent : ProgressBar
+@export var item : Label
+@export var coin : Label
+
 
 var levels: Array[String]
 var loaded_levels: Array[Node]
 var current_player: Player
 var current_level: Node
 var current_level_number := -1
+var title_screen_scene = preload("res://title_screen.tscn")
+var title_screen
 
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	title()
+
+func title():
+	title_screen = title_screen_scene.instantiate()
+	call_deferred("add_child",title_screen)
+	title_screen.connect("start",start)
+
+func start() -> void:
+	title_screen.call_deferred("queue_free")
 	var dir = DirAccess.open("res://levels")
 	if dir == null: printerr("Couldn't open levels folder"); return
 	dir.list_dir_begin()
@@ -28,6 +42,12 @@ func _ready() -> void:
 	
 func _process(delta: float) -> void:
 	light_percent.value = inventory.battery_percentage
+	if inventory.current_item != null:
+		item.text = "Item: "+inventory.current_item.item_name
+	else:
+		item.text = "Item: None"
+	
+	coin.text = "Coin: " + str(inventory.number_of_coins)
 	
 		
 func get_player_spawn_location(exit: bool):
@@ -76,7 +96,8 @@ func restart_game():
 	loaded_levels = []
 	current_level_number = -1
 	current_player.inventory.reset()
-	load_level(true)
+	title()
+	#load_level(true)
 	
 func connect_player_hit():
 	current_player.player_hit.connect(restart_game)
