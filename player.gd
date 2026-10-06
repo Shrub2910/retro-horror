@@ -14,6 +14,7 @@ var dir := Vector2.ZERO
 signal picked_up_item(item: Item)
 signal player_hit
 signal throw_glowstick(pos,dir)
+signal flashed
 
 var door_layer
 var can_use_torch = true
@@ -42,8 +43,12 @@ func _process(delta: float) -> void:
 		wants_to_use_torch = not wants_to_use_torch
 	
 	can_use_torch = inventory.battery_percentage > 0
-		
+	
 	light.visible = can_use_torch and wants_to_use_torch
+	
+	if Input.is_action_just_pressed("Flash") and can_use_torch and light.visible:
+		flashed.emit()
+		inventory.battery_percentage -= 20
 		
 	if light.visible:
 		inventory.battery_percentage -= (delta/battery_time) * 100
