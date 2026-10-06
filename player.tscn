@@ -57,7 +57,7 @@ animations = [{
 radius = 9.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_487v6"]
-size = Vector2(12, 15)
+size = Vector2(8, 10)
 
 [node name="PlayerCharacter" type="CharacterBody2D" unique_id=687693305 node_paths=PackedStringArray("sprite", "light", "lantern", "camera")]
 collision_layer = 10
@@ -117,7 +117,6 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hurtbox" unique_id=333545373]
-position = Vector2(0, 0.5)
 shape = SubResource("RectangleShape2D_487v6")
 
 [node name="Light" type="PointLight2D" parent="." unique_id=1999828418]
@@ -131,7 +130,6 @@ texture_scale = 0.2
 
 [node name="Lantern" type="PointLight2D" parent="." unique_id=1604039365]
 visible = false
-scale = Vector2(0.5, 0.5)
 color = Color(1, 0.7372549, 0, 1)
 texture = ExtResource("5_2hs0m")
 texture_scale = 0.1
