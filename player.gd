@@ -13,6 +13,7 @@ var dir := Vector2.ZERO
 
 signal picked_up_item(item: Item)
 signal player_hit
+signal throw_glowstick(pos,dir)
 signal flashed
 
 var door_layer

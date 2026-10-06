@@ -310,9 +310,13 @@ position = Vector2(436, -53)
 
 [node name="door_left" parent="." unique_id=1934664814 instance=ExtResource("15_fxwke")]
 position = Vector2(-116, 68)
+is_level_trigger = true
 
 [node name="door_right" parent="." unique_id=141928151 instance=ExtResource("16_6m612")]
 position = Vector2(444, 52)
+is_level_trigger = true
+is_going_up = true
+key_required = true
 
 [node name="Chest" parent="." unique_id=254101374 instance=ExtResource("13_t3gyq")]
 position = Vector2(205, 148)

@@ -284,7 +284,7 @@ position = Vector2(230, -44)
 is_exit = true
 
 [node name="Enemy Spawner" parent="." unique_id=1050146858 instance=ExtResource("4_yudvi")]
-position = Vector2(212.02136, -27.899574)
+position = Vector2(186, 23)
 
 [node name="layer2" type="TileMapLayer" parent="." unique_id=353405707]
 tile_map_data = PackedByteArray("AAATAP//AQAAAAAAAAATAAAAAQAAAAAAAAATAAEAAQAAAAAAAAATAAIAAQAAAAAAAAATAAMAAQAAAAAAAAATAAQAAQABAAAAAFA=")
