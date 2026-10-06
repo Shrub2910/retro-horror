@@ -4,6 +4,7 @@ extends Node
 @export var enemy_scene: PackedScene
 @export var inventory: Inventory
 @export var ui:CanvasLayer
+@export var ui_label:Label
 
 var levels: Array[String]
 var loaded_levels: Array[Node]
@@ -62,7 +63,7 @@ func remove_item(item: Item):
 
 func load_level(is_going_up: bool):
 	var level_number = current_level_number + (1 if is_going_up else - 1)
-	$UI/Label.text = "Room "+str(current_level_number+2)
+	ui_label.text = "Room "+str(current_level_number+2)
 	
 	if current_level:
 		level_teardown()
@@ -82,14 +83,12 @@ func load_level(is_going_up: bool):
 	call_deferred("add_child",current_level)
 	
 	var player: Player = player_scene.instantiate()
-	#call_deferred("reparent",)
 	
 	player.position = get_player_spawn_location(not is_going_up)
 	current_level.call_deferred("add_child",player)
 	current_player = player
 	current_player.picked_up_item.connect(remove_item)
 	current_player.inventory = inventory
-	ui.reparent(player)
 	
 	spawn_enemies()
 	connect_level_triggers()
