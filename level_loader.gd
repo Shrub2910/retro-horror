@@ -63,12 +63,11 @@ func remove_item(item: Item):
 
 func load_level(is_going_up: bool):
 	var level_number = current_level_number + (1 if is_going_up else - 1)
+	current_level_number = level_number 
 	ui_label.text = "Room "+str(current_level_number+2)
 	
 	if current_level:
 		level_teardown()
-	
-	current_level_number = level_number 
 	
 	if current_level_number < loaded_levels.size():
 		current_level = loaded_levels[current_level_number]

@@ -277,10 +277,10 @@ tile_map_data = PackedByteArray("AAD3//H/AAAAAAAAAGD3//L/AAAAAAAAAGD3//P/AAAAAAA
 tile_set = SubResource("TileSet_rp140")
 
 [node name="Player Spawner" parent="." unique_id=1184177543 instance=ExtResource("3_67p2u")]
-position = Vector2(-52, -87)
+position = Vector2(-124, -76)
 
 [node name="Player Spawner2" parent="." unique_id=2084394029 instance=ExtResource("3_67p2u")]
-position = Vector2(200, 6)
+position = Vector2(111.55248, -51.9056)
 is_exit = true
 
 [node name="Enemy Spawner" parent="." unique_id=1050146858 instance=ExtResource("4_3q0yc")]
