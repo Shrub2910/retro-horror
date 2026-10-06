@@ -5,6 +5,8 @@ extends Node
 @export var inventory: Inventory
 @export var ui:CanvasLayer
 @export var ui_label:Label
+@export var throwable_scene : PackedScene
+@export var light_percent : ProgressBar
 
 var levels: Array[String]
 var loaded_levels: Array[Node]
@@ -23,6 +25,10 @@ func _ready() -> void:
 		levels.append(dir.get_current_dir() + "/" + file)
 		
 	load_level(true)
+	
+func _process(delta: float) -> void:
+	light_percent.value = inventory.battery_percentage
+	
 		
 func get_player_spawn_location(exit: bool):
 	for child in current_level.get_children():
@@ -105,7 +111,14 @@ func load_level(is_going_up: bool):
 	current_player = player
 	current_player.picked_up_item.connect(remove_item)
 	current_player.inventory = inventory
+	current_player.connect("throw_glowstick",throw_glowstick)
 	connect_player_hit()
 	
 	spawn_enemies()
 	connect_level_triggers()
+
+func throw_glowstick(pos,dir):
+	var glowstick = throwable_scene.instantiate()
+	current_level.call_deferred("add_child", glowstick)
+	glowstick.dir = dir
+	glowstick.global_position = pos

@@ -313,7 +313,7 @@ is_going_up = true
 key_required = true
 
 [node name="Enemy Spawner3" parent="." unique_id=754113277 instance=ExtResource("4_rl2je")]
-position = Vector2(-119.182846, 23.673523)
+position = Vector2(-117, -9)
 
 [node name="key" parent="." unique_id=1772522062 instance=ExtResource("26_aphn6")]
 position = Vector2(76, -132)
