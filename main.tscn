@@ -7,11 +7,20 @@
 
 [node name="Main" type="Node2D" unique_id=1844533394]
 
-[node name="Level Loader" type="Node" parent="." unique_id=1913373080 node_paths=PackedStringArray("inventory")]
+[node name="Level Loader" type="Node" parent="." unique_id=1913373080 node_paths=PackedStringArray("inventory", "ui")]
 script = ExtResource("1_ig7tw")
 player_scene = ExtResource("2_0xm2m")
 enemy_scene = ExtResource("3_h2yge")
 inventory = NodePath("../Inventory")
+ui = NodePath("UI")
+
+[node name="UI" type="CanvasLayer" parent="Level Loader" unique_id=661250493]
+
+[node name="Label" type="Label" parent="Level Loader/UI" unique_id=285960742]
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_font_sizes/font_size = 12
+text = "Room 0"
 
 [node name="Inventory" type="Node" parent="." unique_id=939895391]
 script = ExtResource("4_1bvp3")

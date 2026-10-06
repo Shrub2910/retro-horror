@@ -24,6 +24,7 @@
 [ext_resource type="Texture2D" uid="uid://d2e7q57rabgvm" path="res://assets/small plant.png" id="21_cfcin"]
 [ext_resource type="Texture2D" uid="uid://b2q2ggte0cq3a" path="res://assets/tall plant.png" id="22_kw6bq"]
 [ext_resource type="Texture2D" uid="uid://dghoc51low88p" path="res://assets/piano.png" id="23_hlxpo"]
+[ext_resource type="PackedScene" uid="uid://d4b1bcdvrjjgb" path="res://key.tscn" id="25_uggb1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wu3x4"]
 texture = ExtResource("1_se8ph")
@@ -290,7 +291,7 @@ tile_set = SubResource("TileSet_487v6")
 
 [node name="layer3" type="TileMapLayer" parent="." unique_id=1630835298]
 y_sort_enabled = true
-tile_map_data = PackedByteArray("AAATAPT/AwAAAAAABgDw//b/AwAAAAAABwDw/wYAAwAAAAAABwAFAAYAAwAAAAAABwARAAgAAwAAAAAABwAFAAQAAwAAAAAAAQAIAAEAAwAAAAAACAD1/wgAAwAAAAAACAABAP3/AwAAAAAABwALAPT/AwAAAAAABwAOAPX/CgAAAAAAAADv//3/BAAAAAAAAADv//7/BAAAAAEAAADw//3/BAABAAAAAADw//7/BAABAAEAAADx//7/BQAAAAAAAAD0//X/CgAAAAAAAAD//wMACgAAAAAAAADy/wAABwAAAAAAAADy/wEABwAAAAEAAADt/wEABwAAAAEAAADt/wAABwAAAAAAAADt//r/BwAAAAAAAADt//v/BwAAAAEAAADy//r/BwAAAAAAAADy//v/BwAAAAEAAADv////BQAAAAAAAADu//3/BQAAAAAAAADu/wcACgAAAAAAAADy//z/CgAAAAAAAAA=")
+tile_map_data = PackedByteArray("AADw//b/AwAAAAAABwDw/wYAAwAAAAAABwAFAAYAAwAAAAAABwARAAgAAwAAAAAABwAFAAQAAwAAAAAAAQAIAAEAAwAAAAAACAD1/wgAAwAAAAAACAABAP3/AwAAAAAABwALAPT/AwAAAAAABwAOAPX/CgAAAAAAAADv//3/BAAAAAAAAADv//7/BAAAAAEAAADw//3/BAABAAAAAADw//7/BAABAAEAAADx//7/BQAAAAAAAAD0//X/CgAAAAAAAAD//wMACgAAAAAAAADy/wAABwAAAAAAAADy/wEABwAAAAEAAADt/wEABwAAAAEAAADt/wAABwAAAAAAAADt//r/BwAAAAAAAADt//v/BwAAAAEAAADy//r/BwAAAAAAAADy//v/BwAAAAEAAADv////BQAAAAAAAADu//3/BQAAAAAAAADu/wcACgAAAAAAAADy//z/CgAAAAAAAAA=")
 tile_set = SubResource("TileSet_i0y1q")
 
 [node name="door_right" parent="." unique_id=1646856157 instance=ExtResource("14_cik2g")]
@@ -298,3 +299,6 @@ position = Vector2(212, 5)
 is_level_trigger = true
 is_going_up = true
 key_required = true
+
+[node name="key" parent="." unique_id=1772522062 instance=ExtResource("25_uggb1")]
+position = Vector2(156, -93)

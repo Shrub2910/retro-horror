@@ -59,13 +59,14 @@ radius = 9.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_487v6"]
 size = Vector2(12, 15)
 
-[node name="PlayerCharacter" type="CharacterBody2D" unique_id=687693305 node_paths=PackedStringArray("sprite", "light", "lantern")]
+[node name="PlayerCharacter" type="CharacterBody2D" unique_id=687693305 node_paths=PackedStringArray("sprite", "light", "lantern", "camera")]
 collision_layer = 9
 script = ExtResource("1_onrkg")
 speed = 50
 sprite = NodePath("AnimatedSprite2D")
 light = NodePath("Light")
 lantern = NodePath("Lantern")
+camera = NodePath("PlayerCamera")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1033953632]
 shape = SubResource("RectangleShape2D_4flbx")

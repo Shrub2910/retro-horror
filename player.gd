@@ -9,6 +9,7 @@ var dir := Vector2.ZERO
 @export var lantern: PointLight2D
 @export var is_using_controller := false
 @export var battery_time = 30
+@export var camera : Camera2D
 
 signal picked_up_item(item: Item)
 
