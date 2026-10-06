@@ -14,11 +14,11 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	if not body is Player: return 
 	var player: Player = body 
 	
-	if key_required and player.basic_key_count < 1:
+	if key_required and player.inventory.key_count < 1:
 		return 
 		
 	if key_required:
-		player.basic_key_count -= 1
+		player.inventory.key_count -= 1
 		key_required = false
 	
 	frame = 1

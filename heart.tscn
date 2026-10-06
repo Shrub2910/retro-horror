@@ -1,7 +1,11 @@
 [gd_scene format=3 uid="uid://j5jjxu4ptpad"]
 
 [ext_resource type="Texture2D" uid="uid://djyffxbiyubqs" path="res://assets/heart.png" id="1_cixvg"]
+[ext_resource type="Script" uid="uid://ci7lv4h71eef3" path="res://heart.gd" id="1_pembh"]
 [ext_resource type="Texture2D" uid="uid://5h2errhyllxk" path="res://assets/LightSprite.png" id="2_7p8dj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bjxl8"]
+size = Vector2(8, 8)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7p8dj"]
 atlas = ExtResource("1_cixvg")
@@ -25,21 +29,21 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_bjxl8"]
-size = Vector2(8, 8)
+[node name="heart" type="Area2D" unique_id=1806718074]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_pembh")
+item_name = "Heart"
+requires_interact = true
 
-[node name="heart" type="AnimatedSprite2D" unique_id=1385567748]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1208836203]
+shape = SubResource("RectangleShape2D_bjxl8")
+
+[node name="heart" type="AnimatedSprite2D" parent="." unique_id=1385567748]
 sprite_frames = SubResource("SpriteFrames_487v6")
 autoplay = "default"
 frame_progress = 0.8650219
 metadata/Item = "Heart"
-
-[node name="Area2D" type="Area2D" parent="." unique_id=1806718074]
-collision_layer = 4
-collision_mask = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1208836203]
-shape = SubResource("RectangleShape2D_bjxl8")
 
 [node name="PointLight2D" type="PointLight2D" parent="." unique_id=424398777]
 color = Color(0.6892151, 6.9308284e-05, 0.56302017, 1)

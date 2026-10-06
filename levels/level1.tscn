@@ -13,6 +13,8 @@
 [ext_resource type="PackedScene" uid="uid://d4b1bcdvrjjgb" path="res://key.tscn" id="12_26xyx"]
 [ext_resource type="PackedScene" uid="uid://c4dmsn3rhwati" path="res://door_down.tscn" id="12_e1pw2"]
 [ext_resource type="PackedScene" uid="uid://dttqhedvn45u8" path="res://enemy_spawner.tscn" id="13_f7u7y"]
+[ext_resource type="PackedScene" uid="uid://8fk0dlibnyhb" path="res://battery.tscn" id="14_f7u7y"]
+[ext_resource type="PackedScene" uid="uid://d1g3akdb315t2" path="res://lantern.tscn" id="15_jq2cn"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_mk0cl"]
 texture = ExtResource("7_w3lrq")
@@ -133,3 +135,9 @@ position = Vector2(28, 100)
 is_level_trigger = true
 is_going_up = true
 key_required = true
+
+[node name="Battery" parent="." unique_id=785681338 instance=ExtResource("14_f7u7y")]
+position = Vector2(91, -25)
+
+[node name="latern" parent="." unique_id=1490110675 instance=ExtResource("15_jq2cn")]
+position = Vector2(-53, 34)

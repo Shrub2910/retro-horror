@@ -3,10 +3,15 @@
 [ext_resource type="Script" uid="uid://bcy0p8vn2ke5m" path="res://level_loader.gd" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://bt0bh0b864xbs" path="res://player.tscn" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://bd6goy3hhpbwf" path="res://ghost.tscn" id="3_h2yge"]
+[ext_resource type="Script" uid="uid://co0nf3phdodcd" path="res://inventory.gd" id="4_1bvp3"]
 
 [node name="Main" type="Node2D" unique_id=1844533394]
 
-[node name="Level Loader" type="Node" parent="." unique_id=1913373080]
+[node name="Level Loader" type="Node" parent="." unique_id=1913373080 node_paths=PackedStringArray("inventory")]
 script = ExtResource("1_ig7tw")
 player_scene = ExtResource("2_0xm2m")
 enemy_scene = ExtResource("3_h2yge")
+inventory = NodePath("../Inventory")
+
+[node name="Inventory" type="Node" parent="." unique_id=939895391]
+script = ExtResource("4_1bvp3")
