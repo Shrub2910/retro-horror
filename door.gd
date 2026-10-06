@@ -20,11 +20,13 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	if key_required:
 		player.inventory.key_count -= 1
 		key_required = false
-	
-	frame = 1
-	hitbox.set_deferred("disabled", true)
+		
+	if not(is_level_trigger and not is_going_up):
+		frame = 1
+		hitbox.set_deferred("disabled", true)
 	
 	if is_level_trigger:
+		if not is_going_up: return
 		change_level.emit(is_going_up)
 
 		

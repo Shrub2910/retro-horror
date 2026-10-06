@@ -48,6 +48,9 @@ func connect_level_triggers():
 		door.change_level.connect(load_level)
 		
 func level_teardown():
+	disconnect_player_hit()
+	current_player.picked_up_item.disconnect(remove_item)
+
 	for child in current_level.get_children():
 			if child is Player or child is Ghost:
 				child.queue_free()
@@ -56,8 +59,6 @@ func level_teardown():
 				var door: Door = child
 				door.change_level.disconnect(load_level)
 			
-	current_player.picked_up_item.disconnect(remove_item)
-	disconnect_player_hit()
 	call_deferred("remove_child",current_level)
 	
 func remove_item(item: Item):
@@ -75,7 +76,7 @@ func connect_player_hit():
 	current_player.player_hit.connect(restart_game)
 
 func disconnect_player_hit():
-	current_player.player_hit.connect(restart_game)
+	current_player.player_hit.disconnect(restart_game)
 
 func load_level(is_going_up: bool):
 	var level_number = current_level_number + (1 if is_going_up else - 1)
