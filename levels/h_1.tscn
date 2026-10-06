@@ -244,8 +244,14 @@ tile_set = SubResource("TileSet_487v6")
 
 [node name="layer3" type="TileMapLayer" parent="." unique_id=699125477]
 y_sort_enabled = true
-tile_map_data = PackedByteArray("AADu//P/AwAAAAAAAQDr/wMABAAAAAAAAADr/wQABAAAAAEAAADs/wMABAABAAAAAADs/wQABAABAAEAAADq/wQABQAAAAAAAADt/wQABQAAAAAAAADt//P/CgAAAAAAAADv//P/CgAAAAAAAADs//T/AwAAAAAABwDr/wEAAwAAAAAABwD0//7/AwAAAAAABwD4//b/AwAAAAAABwDt//r/CwAAAAAAAADt//v/CwAAAAEAAADt//z/CwAAAAIAAADu//r/CwABAAAAAADu//v/CwABAAEAAADu//z/CwABAAIAAADv//r/CwACAAAAAADv//v/CwACAAEAAADv//z/CwACAAIAAADw//r/CwADAAAAAADw//v/CwADAAEAAADw//z/CwADAAIAAADx//v/BwAAAAAAAADx//z/BwAAAAEAAADs//v/BwAAAAAAAADs//z/BwAAAAEAAADr//z/BgAAAAAAAADy//z/BgAAAAAAAADp/wUACgAAAAAAAAD+/wcACgAAAAAAAADl//n/AwAAAAAABwDu//3/BQAAAAAAAADg/wYAAwAAAAAACADy//v/AwAAAAAACAA=")
+tile_map_data = PackedByteArray("AADr/wMABAAAAAAAAADr/wQABAAAAAEAAADs/wMABAABAAAAAADs/wQABAABAAEAAADq/wQABQAAAAAAAADt/wQABQAAAAAAAADt//P/CgAAAAAAAADv//P/CgAAAAAAAADs//T/AwAAAAAABwDr/wEAAwAAAAAABwD0//7/AwAAAAAABwD4//b/AwAAAAAABwDt//r/CwAAAAAAAADt//v/CwAAAAEAAADt//z/CwAAAAIAAADu//r/CwABAAAAAADu//v/CwABAAEAAADu//z/CwABAAIAAADv//r/CwACAAAAAADv//v/CwACAAEAAADv//z/CwACAAIAAADw//r/CwADAAAAAADw//v/CwADAAEAAADw//z/CwADAAIAAADx//v/BwAAAAAAAADx//z/BwAAAAEAAADs//v/BwAAAAAAAADs//z/BwAAAAEAAADr//z/BgAAAAAAAADy//z/BgAAAAAAAADp/wUACgAAAAAAAAD+/wcACgAAAAAAAADl//n/AwAAAAAABwDy//v/AwAAAAAACAA=")
 tile_set = SubResource("TileSet_7uwtt")
 
 [node name="key" parent="." unique_id=1772522062 instance=ExtResource("18_a57il")]
 position = Vector2(-28, -83)
+
+[node name="Battery" parent="." unique_id=785681338 instance=ExtResource("18_rnrsx")]
+position = Vector2(-256.3354, 44.1313)
+
+[node name="Chest" parent="." unique_id=254101374 instance=ExtResource("13_bq1hl")]
+position = Vector2(-139, -100)
