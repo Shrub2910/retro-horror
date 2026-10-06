@@ -295,7 +295,7 @@ tile_map_data = PackedByteArray("AADw//b/AwAAAAAABwDw/wYAAwAAAAAABwAFAAYAAwAAAAA
 tile_set = SubResource("TileSet_i0y1q")
 
 [node name="door_right" parent="." unique_id=1646856157 instance=ExtResource("14_cik2g")]
-position = Vector2(212, 5)
+position = Vector2(212, 4)
 is_level_trigger = true
 is_going_up = true
 key_required = true
