@@ -5,6 +5,19 @@
 [ext_resource type="PackedScene" uid="uid://bd6goy3hhpbwf" path="res://ghost.tscn" id="3_h2yge"]
 [ext_resource type="Script" uid="uid://co0nf3phdodcd" path="res://inventory.gd" id="4_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://cthkdlu0hfg8s" path="res://throwable_glowstick.tscn" id="4_lquwl"]
+[ext_resource type="PackedScene" uid="uid://d22tvs443k481" path="res://levels/h_1.tscn" id="5_w48qg"]
+[ext_resource type="PackedScene" uid="uid://803phmamo8wh" path="res://levels/h_3.tscn" id="6_vivmo"]
+[ext_resource type="PackedScene" uid="uid://cp5kl4i4k5bls" path="res://levels/h_4.tscn" id="7_2cqfq"]
+[ext_resource type="PackedScene" uid="uid://ix16qjw07lln" path="res://levels/h_maze.tscn" id="8_yaehf"]
+[ext_resource type="PackedScene" uid="uid://b2xdgeo10uwo3" path="res://levels/level1.tscn" id="9_074og"]
+[ext_resource type="PackedScene" uid="uid://dolhpct52an28" path="res://levels/h_stage.tscn" id="10_cegan"]
+[ext_resource type="PackedScene" uid="uid://mqumacgxjmh6" path="res://levels/h_booths.tscn" id="11_82xsv"]
+[ext_resource type="PackedScene" uid="uid://qr13k056isw2" path="res://levels/h_plants.tscn" id="12_getpj"]
+[ext_resource type="PackedScene" uid="uid://bkr4r8n2dab3c" path="res://levels/h_hammer_head.tscn" id="13_ryguw"]
+[ext_resource type="Texture2D" uid="uid://b1doxiyue7of0" path="res://assets/empty torch.png" id="15_2cqfq"]
+[ext_resource type="Texture2D" uid="uid://byru3gs448h74" path="res://assets/full torch.png" id="16_yaehf"]
+[ext_resource type="Texture2D" uid="uid://cfug8teau20u4" path="res://assets/coin sprite.png" id="17_yaehf"]
+[ext_resource type="Texture2D" uid="uid://bbx7hno7fnf84" path="res://assets/door_icon.png" id="18_074og"]
 
 [node name="Main" type="Node2D" unique_id=1844533394]
 
@@ -16,9 +29,10 @@ inventory = NodePath("../Inventory")
 ui = NodePath("../UI")
 ui_label = NodePath("../UI/Label")
 throwable_scene = ExtResource("4_lquwl")
-light_percent = NodePath("../UI/ProgressBar")
+light_percent = NodePath("../UI/TextureProgressBar")
 item = NodePath("../UI/item")
 coin = NodePath("../UI/coin")
+level_scenes = Array[PackedScene]([ExtResource("5_w48qg"), ExtResource("6_vivmo"), ExtResource("7_2cqfq"), ExtResource("8_yaehf"), ExtResource("9_074og"), ExtResource("10_cegan"), ExtResource("11_82xsv"), ExtResource("12_getpj"), ExtResource("13_ryguw")])
 
 [node name="Inventory" type="Node" parent="." unique_id=939895391]
 script = ExtResource("4_1bvp3")
@@ -26,23 +40,11 @@ script = ExtResource("4_1bvp3")
 [node name="UI" type="CanvasLayer" parent="." unique_id=661250493]
 
 [node name="Label" type="Label" parent="UI" unique_id=285960742]
-offset_right = 40.0
+offset_left = 15.0
+offset_right = 59.0
 offset_bottom = 23.0
 theme_override_font_sizes/font_size = 12
-text = "Room 0"
-
-[node name="ProgressBar" type="ProgressBar" parent="UI" unique_id=376821339]
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 5.0
-offset_top = -130.0
-offset_right = 13.0
-offset_bottom = -70.0
-grow_vertical = 0
-value = 100.0
-fill_mode = 3
-show_percentage = false
+text = "1"
 
 [node name="item" type="Label" parent="UI" unique_id=66082978]
 offset_left = 1.0
@@ -52,7 +54,31 @@ offset_bottom = 179.0
 theme_override_font_sizes/font_size = 12
 
 [node name="coin" type="Label" parent="UI" unique_id=1755073187]
-offset_left = 280.0
-offset_right = 320.0
+offset_left = 300.0
+offset_right = 340.0
 offset_bottom = 23.0
 theme_override_font_sizes/font_size = 12
+text = "2"
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="UI" unique_id=1511411207]
+offset_left = 5.0
+offset_top = 50.0
+offset_right = 13.0
+offset_bottom = 110.0
+step = 0.001
+value = 11.0
+fill_mode = 3
+nine_patch_stretch = true
+texture_under = ExtResource("15_2cqfq")
+texture_progress = ExtResource("16_yaehf")
+
+[node name="coin_sprite" type="Sprite2D" parent="UI" unique_id=602297832]
+modulate = Color(1, 1, 0, 1)
+position = Vector2(290, 9)
+scale = Vector2(1.8, 1.8)
+texture = ExtResource("17_yaehf")
+
+[node name="door_sprite" type="Sprite2D" parent="UI" unique_id=1407283831]
+position = Vector2(9, 9)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("18_074og")

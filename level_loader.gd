@@ -6,9 +6,10 @@ extends Node
 @export var ui:CanvasLayer
 @export var ui_label:Label
 @export var throwable_scene : PackedScene
-@export var light_percent : ProgressBar
+@export var light_percent : TextureProgressBar
 @export var item : Label
 @export var coin : Label
+@export var level_scenes : Array[PackedScene]
 
 
 var levels: Array[String]
@@ -47,7 +48,7 @@ func _process(delta: float) -> void:
 	else:
 		item.text = "Item: None"
 	
-	coin.text = "Coin: " + str(inventory.number_of_coins)
+	coin.text = str(inventory.number_of_coins)
 	
 		
 func get_player_spawn_location(exit: bool):
@@ -112,12 +113,12 @@ func load_level(is_going_up: bool):
 		level_teardown()
 	
 	current_level_number = level_number 
-	ui_label.text = "Room "+str(current_level_number+1)
+	ui_label.text = str(current_level_number+1)
 	
 	if current_level_number < loaded_levels.size():
 		current_level = loaded_levels[current_level_number]
 	else:
-		var level_scene: PackedScene = load(levels[randi_range(0, levels.size() -1)])
+		var level_scene: PackedScene = level_scenes[randi_range(0, level_scenes.size() -1)]
 		current_level = level_scene.instantiate()
 		var canvas_modulate := CanvasModulate.new()
 		canvas_modulate.color = Color.BLACK
