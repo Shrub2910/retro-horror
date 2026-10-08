@@ -23,6 +23,7 @@ animations = [{
 }]
 
 [node name="glow_stick" type="Area2D" unique_id=985390906]
+self_modulate = Color(0, 1, 0, 1)
 collision_layer = 4
 collision_mask = 0
 script = ExtResource("1_hcwan")
