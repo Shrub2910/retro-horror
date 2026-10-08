@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://b8lv48kohjblv" path="res://chest.gd" id="2_8uwsg"]
 [ext_resource type="PackedScene" uid="uid://d1g3akdb315t2" path="res://lantern.tscn" id="3_trlyu"]
 [ext_resource type="PackedScene" uid="uid://b2e0q80wdyq8x" path="res://glow_stick.tscn" id="4_x7mpe"]
+[ext_resource type="PackedScene" uid="uid://d3wdnomdkeyiy" path="res://soda.tscn" id="5_x7mpe"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8uwsg"]
 atlas = ExtResource("1_twpm2")
@@ -39,8 +40,7 @@ animation = &"Open"
 script = ExtResource("2_8uwsg")
 hitbox = NodePath("StaticBody2D")
 area = NodePath("Area2D")
-lantern_scene = ExtResource("3_trlyu")
-glow_stick_scene = ExtResource("4_x7mpe")
+item_scenes = Array[PackedScene]([ExtResource("3_trlyu"), ExtResource("4_x7mpe"), ExtResource("5_x7mpe")])
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=349759053]
 
