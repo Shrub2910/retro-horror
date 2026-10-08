@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://d3wdnomdkeyiy"]
+
+[ext_resource type="Script" uid="uid://chyu6p7ttttqj" path="res://soda.gd" id="1_qkrgf"]
+[ext_resource type="Texture2D" uid="uid://bv4uc4w1m7fpm" path="res://assets/soda.png" id="2_pt5tr"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kagwq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_pt5tr")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kagwq"]
+size = Vector2(4, 6)
+
+[node name="Soda" type="Area2D" unique_id=87929377]
+script = ExtResource("1_qkrgf")
+item_name = "Soda"
+requires_interact = true
+display_image = ExtResource("2_pt5tr")
+metadata/_custom_type_script = "uid://by8b7vmfvl7jq"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=870974398]
+sprite_frames = SubResource("SpriteFrames_kagwq")
+frame_progress = 0.7095539
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2147205987]
+shape = SubResource("RectangleShape2D_kagwq")
