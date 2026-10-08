@@ -270,6 +270,7 @@ sources/10 = SubResource("TileSetAtlasSource_6303x")
 sources/12 = SubResource("TileSetScenesCollectionSource_g627a")
 
 [sub_resource type="SystemFont" id="SystemFont_g3bb0"]
+subpixel_positioning = 0
 
 [node name="h_test" type="Node2D" unique_id=310221700]
 position = Vector2(170, 145)
