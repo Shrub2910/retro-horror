@@ -10,6 +10,7 @@ var dir := Vector2.ZERO
 @export var is_using_controller := false
 @export var battery_time = 30
 @export var camera : Camera2D
+@export var speed_boost_multiplier := 2
 
 signal picked_up_item(item: Item)
 signal player_hit
@@ -17,9 +18,10 @@ signal throw_glowstick(pos,dir)
 signal flashed
 
 var door_layer
-var can_use_torch = true
-var wants_to_use_torch = false
+var can_use_torch := true
+var wants_to_use_torch := false
 var inventory: Inventory
+var speed_boost := 0.0
 
 func _process(delta: float) -> void:
 	dir = Input.get_vector("Left","Right","Up","Down").normalized()
@@ -37,7 +39,14 @@ func _process(delta: float) -> void:
 			pass
 	else:
 		rotation = lerp_angle(rotation, (get_global_mouse_position() - global_position).angle(), delta*rotation_speed)
-	velocity = dir * speed
+	
+	speed_boost -= delta
+	if speed_boost < 0: speed_boost = 0
+	
+	velocity = dir * speed 
+	
+	if speed_boost > 0:
+		velocity *= speed_boost_multiplier
 	
 	if Input.is_action_just_pressed("Toggle_light"):
 		wants_to_use_torch = not wants_to_use_torch

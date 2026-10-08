@@ -7,7 +7,7 @@ extends Node
 @export var ui_label:Label
 @export var throwable_scene : PackedScene
 @export var light_percent : TextureProgressBar
-@export var item : Label
+@export var item : TextureRect
 @export var coin : Label
 @export var level_scenes : Array[PackedScene]
 
@@ -44,9 +44,9 @@ func start() -> void:
 func _process(delta: float) -> void:
 	light_percent.value = inventory.battery_percentage
 	if inventory.current_item != null:
-		item.text = "Item: "+inventory.current_item.item_name
+		item.texture = inventory.current_item.display_image
 	else:
-		item.text = "Item: None"
+		item.texture = null
 	
 	coin.text = str(inventory.number_of_coins)
 	
