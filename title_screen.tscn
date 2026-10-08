@@ -27,6 +27,7 @@
 [ext_resource type="Texture2D" uid="uid://b2q2ggte0cq3a" path="res://assets/tall plant.png" id="24_lf1qk"]
 [ext_resource type="Texture2D" uid="uid://dghoc51low88p" path="res://assets/piano.png" id="25_dm8kh"]
 [ext_resource type="PackedScene" uid="uid://d4b1bcdvrjjgb" path="res://key.tscn" id="26_ept5e"]
+[ext_resource type="FontFile" uid="uid://0a0wjt0eeu80" path="res://assets/shlop rg.otf" id="28_r38mt"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wu3x4"]
 texture = ExtResource("1_g3bb0")
@@ -269,12 +270,11 @@ sources/11 = SubResource("TileSetAtlasSource_1sm6w")
 sources/10 = SubResource("TileSetAtlasSource_6303x")
 sources/12 = SubResource("TileSetScenesCollectionSource_g627a")
 
-[sub_resource type="SystemFont" id="SystemFont_g3bb0"]
-subpixel_positioning = 0
-
-[node name="h_test" type="Node2D" unique_id=310221700]
+[node name="h_test" type="Node2D" unique_id=310221700 node_paths=PackedStringArray("high_score", "last_score")]
 position = Vector2(170, 145)
 script = ExtResource("1_4crdw")
+high_score = NodePath("CanvasLayer/high_score")
+last_score = NodePath("CanvasLayer/last_score")
 
 [node name="layer1" type="TileMapLayer" parent="." unique_id=683687219]
 y_sort_enabled = true
@@ -339,13 +339,28 @@ offset_bottom = 152.0
 scale = Vector2(0.6, 0.6)
 text = "Play"
 
-[node name="Label" type="Label" parent="CanvasLayer" unique_id=185556632]
-offset_left = 94.0
-offset_top = 19.0
-offset_right = 231.0
-offset_bottom = 42.0
-theme_override_colors/font_color = Color(0.21176471, 0, 0.05490196, 1)
-theme_override_fonts/font = SubResource("SystemFont_g3bb0")
+[node name="high_score" type="Label" parent="CanvasLayer" unique_id=492141711]
+offset_top = 140.0
+offset_right = 93.0
+offset_bottom = 163.0
+theme_override_font_sizes/font_size = 12
+text = "High Score:100"
+
+[node name="last_score" type="Label" parent="CanvasLayer" unique_id=973008501]
+offset_top = 156.0
+offset_right = 40.0
+offset_bottom = 179.0
+theme_override_font_sizes/font_size = 12
+text = "Previous score:50"
+
+[node name="Label" type="Label" parent="CanvasLayer" unique_id=1006953181]
+offset_left = 103.0
+offset_top = 20.0
+offset_right = 240.0
+offset_bottom = 51.0
+theme_override_colors/font_color = Color(0.2817234, 0, 0.08308268, 1)
+theme_override_fonts/font = ExtResource("28_r38mt")
+theme_override_font_sizes/font_size = 25
 text = "WEEPING MANOR"
 
 [connection signal="pressed" from="CanvasLayer/Button" to="." method="_on_button_pressed"]

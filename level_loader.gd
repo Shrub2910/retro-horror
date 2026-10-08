@@ -19,7 +19,8 @@ var current_level: Node
 var current_level_number := -1
 var title_screen_scene = preload("res://title_screen.tscn")
 var title_screen
-
+var high_score = 0
+var last_score = 0
 
 
 # Called when the node enters the scene tree for the first time.
@@ -30,6 +31,8 @@ func title():
 	title_screen = title_screen_scene.instantiate()
 	call_deferred("add_child",title_screen)
 	title_screen.connect("start",start)
+	title_screen.high_score.text = "HIGH SCORE : " + str(high_score)
+	title_screen.last_score.text = "LAST SCORE : " + str(last_score)
 
 func start() -> void:
 	title_screen.call_deferred("queue_free")
@@ -65,6 +68,9 @@ func spawn_enemies():
 		var new_enemy: Ghost = enemy_scene.instantiate()
 		new_enemy.position = enemy_spawner.position
 		new_enemy.player = current_player
+		new_enemy.speed = 20 + current_level_number
+		if new_enemy.speed > 50:
+			new_enemy.speed = 50
 		current_level.call_deferred("add_child",new_enemy)
 
 func connect_level_triggers():
@@ -92,6 +98,9 @@ func remove_item(item: Item):
 	current_level.call_deferred("remove_child", item)
 	
 func restart_game():
+	last_score = (inventory.number_of_coins * 50) + (current_level_number * 100)
+	if last_score > high_score:
+		high_score = last_score
 	for level in loaded_levels:
 		level.queue_free()
 	loaded_levels = []
